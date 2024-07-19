@@ -1,5 +1,3 @@
-
-
 // Feature Requests
 
 // 1. Number Check Script: Write a script that checks if a number is positive, negative, or zero using if-else statements and logs the result.
