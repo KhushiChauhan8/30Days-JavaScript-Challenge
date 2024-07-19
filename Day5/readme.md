@@ -1,155 +1,78 @@
-// Activity 1: Function Declaration
-console.log("--- Activity 1: Function Declaration ---");
+# Day 5: Functions
 
-// Task 1: Write a function to check if a number is even or odd and log the result to the console.
-console.log("Task 1: Check if a number is even or odd");
-function checkEvenOdd(number) {
-    if (number % 2 === 0) {
-        console.log(`${number} is even.`);
-    } else {
-        console.log(`${number} is odd.`);
-    }
-}
-checkEvenOdd(5);  // Example: 5 is odd.
+## Overview
 
-console.log("");
+On Day 5 of the 30-day JavaScript challenge, I focused on understanding and implementing various types of functions in JavaScript. This included function declarations, function expressions, arrow functions, functions with parameters and default values, and higher-order functions. Below is a summary of the tasks completed and the concepts learned.
 
-// Task 2: Write a function to calculate the square of a number and return the result.
-console.log("Task 2: Calculate the square of a number");
-function calculateSquare(number) {
-    return number * number;
-}
-console.log(calculateSquare(4));  // Example: 16
+## Activities and Tasks
 
-console.log("");
+### Activity 1: Function Declaration
 
-// Activity 2: Function Expression
-console.log("--- Activity 2: Function Expression ---");
+**Task 1: Check if a Number is Even or Odd**
+- Learned how to declare a function that determines whether a given number is even or odd.
+- Practiced using the modulo operator (`%`) to check for evenness.
 
-// Task 3: Write a function expression to find the maximum of two numbers and log the result to the console.
-console.log("Task 3: Find the maximum of two numbers");
-const findMax = function(a, b) {
-    const max = a > b ? a : b;
-    console.log(`The maximum of ${a} and ${b} is ${max}.`);
-}
-findMax(7, 3);  // Example: The maximum of 7 and 3 is 7.
+**Task 2: Calculate the Square of a Number**
+- Created a function that calculates and returns the square of a given number.
+- Reinforced the understanding of basic arithmetic operations within a function.
 
-console.log("");
+### Activity 2: Function Expression
 
-// Task 4: Write a function expression to concatenate two strings and return the result.
-console.log("Task 4: Concatenate two strings");
-const concatenateStrings = function(str1, str2) {
-    return str1 + str2;
-}
-console.log(concatenateStrings("Hello, ", "world!"));  // Example: Hello, world!
+**Task 3: Find the Maximum of Two Numbers**
+- Learned to write a function expression to find the maximum of two numbers.
+- Utilized the ternary operator to compare two values and log the result.
 
-console.log("");
+**Task 4: Concatenate Two Strings**
+- Created a function expression that concatenates two strings and returns the result.
+- Practiced string manipulation and returning values from functions.
 
-// Activity 3: Arrow Functions
-console.log("--- Activity 3: Arrow Functions ---");
+### Activity 3: Arrow Functions
 
-// Task 5: Write an arrow function to calculate the sum of two numbers and return the result.
-console.log("Task 5: Calculate the sum of two numbers");
-const calculateSum = (a, b) => a + b;
-console.log(calculateSum(5, 10));  // Example: 15
+**Task 5: Calculate the Sum of Two Numbers**
+- Wrote an arrow function to calculate and return the sum of two numbers.
+- Gained familiarity with the concise syntax of arrow functions.
 
-console.log("");
+**Task 6: Check if a String Contains a Specific Character**
+- Developed an arrow function to check if a string contains a specific character and return a boolean value.
+- Practiced using the `includes` method for string checking.
 
-// Task 6: Write an arrow function to check if a string contains a specific character and return a boolean value.
-console.log("Task 6: Check if a string contains a specific character");
-const containsCharacter = (str, char) => str.includes(char);
-console.log(containsCharacter("JavaScript", "J"));  // Example: true
+### Activity 4: Function Parameters and Default Values
 
-console.log("");
+**Task 7: Return the Product of Two Parameters with a Default Value**
+- Created a function that takes two parameters and returns their product, with a default value for the second parameter.
+- Learned to set default parameter values to make functions more flexible.
 
-// Activity 4: Function Parameters and Default Values
-console.log("--- Activity 4: Function Parameters and Default Values ---");
+**Task 8: Return a Greeting Message with Name and Age**
+- Wrote a function that takes a person's name and age, returning a greeting message with a default age value if none is provided.
+- Practiced string interpolation and default parameters.
 
-// Task 7: Write a function that takes two parameters and returns their product. Provide a default value for the second parameter.
-console.log("Task 7: Return the product of two parameters with a default value");
-function multiply(a, b = 1) {
-    return a * b;
-}
-console.log(multiply(6, 7));  // Example: 42
-console.log(multiply(6));  // Example: 6
+### Activity 5: Higher-Order Functions
 
-console.log("");
+**Task 9: Call a Function Multiple Times**
+- Developed a higher-order function that takes another function and a number, calling the provided function the specified number of times.
+- Reinforced understanding of higher-order functions and function callbacks.
 
-// Task 8: Write a function that takes a person's name and age and returns a greeting message. Provide a default value for the age.
-console.log("Task 8: Return a greeting message with name and age");
-function greet(name, age = 'unknown') {
-    return `Hello, ${name}! You are ${age} years old.`;
-}
-console.log(greet("John", 30));  // Example: Hello, John! You are 30 years old.
-console.log(greet("John"));  // Example: Hello, John! You are unknown years old.
+**Task 10: Apply Two Functions in Sequence**
+- Created a higher-order function that applies two functions in sequence to a value, first applying one function and then the other.
+- Learned to chain functions and pass the result of one function to another.
 
-console.log("");
+## Feature Requests
 
-// Activity 5: Higher-Order Functions
-console.log("--- Activity 5: Higher-Order Functions ---");
+**1. Even or Odd Function Script**
+- Applied the even or odd checking function in a script to demonstrate its usage.
 
-// Task 9: Write a higher-order function that takes a function and a number, and calls the function that many times.
-console.log("Task 9: Call a function multiple times");
-function repeatFunction(func, times) {
-    for (let i = 0; i < times; i++) {
-        func();
-    }
-}
-repeatFunction(() => console.log("Hello!"), 3);  // Example: Hello! (3 times)
+**2. Square Calculation Function Script**
+- Implemented the square calculation function in a script to show its practical application.
 
-console.log("");
+**3. Concatenation Function Script**
+- Demonstrated the concatenation function expression within a script for practical usage.
 
-// Task 10: Write a higher-order function that takes two functions and a value, applies the first function to the value, and then applies the second function to the result.
-console.log("Task 10: Apply two functions in sequence");
-function applyFunctions(func1, func2, value) {
-    return func2(func1(value));
-}
-console.log(applyFunctions(calculateSquare, Math.sqrt, 16));  // Example: 4
+**4. Sum Calculation Arrow Function Script**
+- Utilized the sum calculation arrow function in a script to highlight its usage.
 
-console.log("");
+**5. Higher-Order Function Script**
+- Showcased a higher-order function that applies a given function multiple times in a script.
 
-// Feature Requests
-console.log("--- Feature Requests ---");
+## Conclusion
 
-// 1. Even or Odd Function Script
-console.log("Feature Request 1: Even or Odd Function Script");
-function evenOddScript(number) {
-    checkEvenOdd(number);
-}
-evenOddScript(8);  // Example: 8 is even.
-
-console.log("");
-
-// 2. Square Calculation Function Script
-console.log("Feature Request 2: Square Calculation Function Script");
-function squareCalculationScript(number) {
-    return calculateSquare(number);
-}
-console.log(squareCalculationScript(5));  // Example: 25
-
-console.log("");
-
-// 3. Concatenation Function Script
-console.log("Feature Request 3: Concatenation Function Script");
-function concatenationFunctionScript(str1, str2) {
-    return concatenateStrings(str1, str2);
-}
-console.log(concatenationFunctionScript("Good ", "morning!"));  // Example: Good morning!
-
-console.log("");
-
-// 4. Sum Calculation Arrow Function Script
-console.log("Feature Request 4: Sum Calculation Arrow Function Script");
-function sumCalculationArrowFunctionScript(a, b) {
-    return calculateSum(a, b);
-}
-console.log(sumCalculationArrowFunctionScript(3, 4));  // Example: 7
-
-console.log("");
-
-// 5. Higher-Order Function Script
-console.log("Feature Request 5: Higher-Order Function Script");
-function higherOrderFunctionScript(func, times) {
-    repeatFunction(func, times);
-}
-higherOrderFunctionScript(() => console.log("Hi!"), 2);  // Example: Hi! (2 times)
+By completing these tasks, I gained a comprehensive understanding of different types of functions in JavaScript. This included the ability to declare functions, write function expressions and arrow functions, work with function parameters and default values, and create higher-order functions. These skills are fundamental to writing efficient and effective JavaScript code.
