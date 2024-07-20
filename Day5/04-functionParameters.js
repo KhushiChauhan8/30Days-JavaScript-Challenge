@@ -1,7 +1,6 @@
 // Activity 4: Function Parameters and Default Values
 
 // Task 7: Write a function that takes two parameters and returns their product. Provide a default value for the second parameter.
-console.log("Task 7: Return the product of two parameters with a default value");
 function multiply(a, b = 1) {
     return a * b;
 }

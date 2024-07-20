@@ -38,5 +38,3 @@ const checkPositiveNegative = (num) => {
 // Call the checkPositiveNegative function with example values
 checkPositiveNegative(10); // The number 10 is positive
 checkPositiveNegative(-10); // The number -10 is negative
-
-
