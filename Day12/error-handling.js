@@ -95,8 +95,8 @@ const validateUser = function(st){
 }
 
 
-validateUser("shubh")
-validateUser("kishan")
+validateUser("john")
+validateUser("lorem")
 validateUser(1)
 
 //Activity 4: Error Handling in Promises✅
