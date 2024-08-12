@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Management App</h1>
+        <div class="task-box">
+            <input type="text" id="task-input" placeholder="Enter a new task...">
+            <button id="add-task-button">Add Task</button>
+        </div>
+        <div id="task-list" class="task-list"></div>
+    </div>
+
+    <!-- Modal for editing task information -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="edit-task-details"></div>
+        </div>
+    </div>
+
+    <script src="taskManagement.js"></script>
+</body>
+</html>

@@ -1,70 +1,117 @@
-const apiKey = 'f07ad48582d6243151596d1fc0e8b1a1';
-const baseUrl = 'https://api.themoviedb.org/3';
-
-document.getElementById('search-button').addEventListener('click', () => {
-    const query = document.getElementById('search-input').value;
-    if (query) {
-        fetchMovies(query);
+document.addEventListener('DOMContentLoaded', function() {
+    const taskForm = document.getElementById('task-form');
+    const taskContainer = document.getElementById('task-container');
+  
+    loadTasks();
+  
+    taskForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        addTask();
+    });
+  
+    taskContainer.addEventListener('click', function(e) {
+        if (e.target.classList.contains('edit-btn')) {
+            editTask(e.target);
+        }
+        if (e.target.classList.contains('delete-btn')) {
+            if (confirm("Are you sure you want to delete this task?")) {
+                deleteTask(e.target);
+            }
+        }
+    });
+  
+    function loadTasks() {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.forEach(function(task) {
+            createTaskElement(task);
+        });
+    }
+  
+    function addTask() {
+        const titleInput = document.getElementById('task-title');
+        const descriptionInput = document.getElementById('task-description');
+        const dateInput = document.getElementById('date');
+  
+        const task = {
+            title: titleInput.value,
+            description: descriptionInput.value,
+            date: dateInput.value,
+            id: Date.now()
+        };
+  
+        createTaskElement(task);
+        saveTasks();
+  
+        titleInput.value = '';
+        descriptionInput.value = '';
+        dateInput.value = '';
+    }
+  
+    function editTask(editBtn) {
+        const taskItem = editBtn.closest('.task-item');
+        const taskTitle = taskItem.querySelector('.task-name').textContent;
+        const taskDescription = taskItem.querySelector('.task-desc').textContent;
+        const taskDate = taskItem.querySelector('.task-date').textContent;
+        const taskId = taskItem.dataset.taskId;
+  
+        document.getElementById('task-title').value = taskTitle;
+        document.getElementById('task-description').value = taskDescription;
+        document.getElementById('date').value = taskDate;
+  
+        // Remove the task from the DOM and local storage
+        taskItem.remove();
+        saveTasks();  // Save changes to local storage
+  
+        // Update local storage to reflect the removal
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        const updatedTasks = tasks.filter(function(task) {
+            return task.id != taskId;
+        });
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    }
+  
+    function deleteTask(deleteBtn) {
+        const taskItem = deleteBtn.closest('.task-item');
+        const taskId = taskItem.dataset.taskId;
+  
+        taskItem.remove();
+  
+        const tasks = JSON.parse(localStorage.getItem('tasks'));
+        const updatedTasks = tasks.filter(function(task) {
+            return task.id != taskId;
+        });
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    }
+  
+    function createTaskElement(task) {
+        const taskItem = document.createElement('div');
+        taskItem.classList.add('task-item');
+        taskItem.dataset.taskId = task.id;
+  
+        taskItem.innerHTML = `
+            <div class="task-info">
+                <h3 class="task-name">${task.title}</h3>
+                <p class="task-desc">${task.description}</p>
+                <p class="task-date">${task.date}</p>
+            </div>
+            <div class="task-actions">
+                <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
+                <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        `;
+  
+        taskContainer.appendChild(taskItem);
+    }
+  
+    function saveTasks() {
+        const tasks = Array.from(taskContainer.children).map(function(taskItem) {
+            return {
+                title: taskItem.querySelector('.task-name').textContent,
+                description: taskItem.querySelector('.task-desc').textContent,
+                date: taskItem.querySelector('.task-date').textContent,
+                id: taskItem.dataset.taskId
+            };
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 });
-
-function fetchMovies(query) {
-    fetch(`${baseUrl}/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`)
-        .then(response => response.json())
-        .then(data => displayMovies(data.results))
-        .catch(error => console.error('Error fetching movie data:', error));
-}
-
-function displayMovies(movies) {
-    const resultsContainer = document.getElementById('movie-results');
-    resultsContainer.innerHTML = '';
-
-    if (movies.length > 0) {
-        movies.forEach(movie => {
-            const movieItem = document.createElement('div');
-            movieItem.className = 'movie-item';
-            movieItem.innerHTML = `
-                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-                <h2>${movie.title}</h2>
-                <p>${movie.release_date}</p>
-                <button class="more-info" onclick="fetchMovieDetails(${movie.id})">More Info</button>
-            `;
-            resultsContainer.appendChild(movieItem);
-        });
-    } else {
-        resultsContainer.innerHTML = '<p>No results found.</p>';
-    }
-}
-
-function fetchMovieDetails(id) {
-    fetch(`${baseUrl}/movie/${id}?api_key=${apiKey}`)
-        .then(response => response.json())
-        .then(data => displayMovieDetails(data))
-        .catch(error => console.error('Error fetching movie details:', error));
-}
-
-function displayMovieDetails(movie) {
-    const movieDetailsContainer = document.getElementById('movie-details');
-    movieDetailsContainer.innerHTML = `
-        <h2>${movie.title}</h2>
-        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-        <p><strong>Released:</strong> ${movie.release_date}</p>
-        <p><strong>Genre:</strong> ${movie.genres.map(genre => genre.name).join(', ')}</p>
-        <p><strong>Director:</strong> ${movie.director || 'N/A'}</p>
-        <p><strong>Actors:</strong> ${movie.actors || 'N/A'}</p>
-        <p><strong>Plot:</strong> ${movie.overview}</p>
-    `;
-
-    const modal = document.getElementById('movie-modal');
-    modal.style.display = 'block';
-
-    document.querySelector('.close').onclick = function () {
-        modal.style.display = 'none';
-    }
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
-}
