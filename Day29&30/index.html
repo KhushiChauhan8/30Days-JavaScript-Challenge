@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="instagram.png" alt="Instagram Logo">
+            <span>Instagram</span>
+        </div>
+        <!-- <div class="profile-icon">
+            <img src="profile.jpg" alt="Profile">
+        </div> -->
+    </header>
+
+    <div class="container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div id="dashboard" class="dashboard hidden">
+            <form id="postForm">
+                <textarea id="postText" placeholder="What's on your mind?" required></textarea>
+                <input type="text" id="postImage" placeholder="Image URL">
+                <button type="submit">Post</button>
+            </form>
+            <div id="postFeed" class="post-feed"></div>
+        </div>
+    </div>
+    <script src="socialMedia.js"></script>
+</body>
+</html>

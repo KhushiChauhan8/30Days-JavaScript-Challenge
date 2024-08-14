@@ -1,0 +1,140 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Billabong', cursive;
+    font-size: 28px;
+    color: #262626;
+}
+
+.logo img {
+    margin-right: 8px;
+    border-radius: 4px;
+    height: 45px;
+    width: 45px;
+}
+
+
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-form, #postForm {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+button {
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #007bb5;
+}
+
+.post-feed {
+    margin-top: 20px;
+}
+
+.post {
+    border: 1px solid #dbdbdb;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    position: relative;
+}
+
+.post img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.post .username {
+    font-weight: bold;
+    color: #262626;
+}
+
+.post .timestamp {
+    font-size: 0.8em;
+    color: #8e8e8e;
+    margin-top: 5px;
+}
+
+.post .actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post .actions button {
+    background: none;
+    color: #262626;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+}
+
+.post .actions button:hover {
+    color: #0095f6;
+}
+
+.liked {
+    color: red;
+}
+
+.comments {
+    margin-top: 10px;
+}
+
+.comments p {
+    font-size: 14px;
+    color: #262626;
+    margin-bottom: 5px;
+}
