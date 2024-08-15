@@ -23,7 +23,6 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    /* font-family: 'Billabong', cursive; */
     font-family: "Satisfy", cursive;
     font-size: 35px;
     color: #262626;
@@ -37,18 +36,20 @@ body {
     width: 45px;
 }
 
-
 .container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 100px auto;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
 }
 
 .login-form, #postForm {
     margin-bottom: 20px;
+    flex: 2;
 }
 
 .hidden {
@@ -92,6 +93,11 @@ button:hover {
     margin-bottom: 10px;
     background-color: #fff;
     position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+.post:hover {
+    transform: scale(1.02);
 }
 
 .post img {
@@ -141,4 +147,56 @@ button:hover {
     font-size: 14px;
     color: #262626;
     margin-bottom: 5px;
+}
+
+/* Notifications Sidebar */
+#notificationSidebar {
+    width: 200px;
+    background-color: #fff;
+    border-left: 1px solid #dbdbdb;
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    top: 60px;
+    bottom: 0;
+    overflow-y: auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#notificationSidebar h3 {
+    font-size: 1.2em;
+    color: #262626;
+}
+
+#notificationList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#notificationList li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+
+/* Distinct Style for Logged-in User's Posts */
+.post.logged-in-user {
+    border-color: #0095f6;
+    background-color: #f0f9ff;
+}
+
+/* Add animations to posts */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.post {
+    animation: fadeIn 0.5s ease-in-out;
 }
